@@ -8,21 +8,21 @@ function start () {
 
 ////
 
-buttonPlay.on('click', play);
+done - buttonPlay.on('click', play);
 
-function play() {
-  timer();
-  statBarsAuto();
-  hide buttonPlay;
+done -  function play() {
+  done - timer();
+  done - statBarsAuto();
+  done - hide buttonPlay;
 }
 
 ///
 
-function timer() {
+done - function timer() {
   setInterval;
 };
 
-function statBarsAuto() {
+done - function statBarsAuto() {
   moneyAuto();
   energyAuto();
   foodAuto();
@@ -30,34 +30,33 @@ function statBarsAuto() {
 
 ////
 
-function moneyAuto() {
+done - function moneyAuto() {
   setInterval;
   money -= 5;
 }
 
-function energyAuto() {
+done - function energyAuto() {
   setInterval;
   energy -= 10;
 }
 
-function hungerAuto() {
+done - function hungerAuto() {
   setInterval;
   food -= 5;
 }
 
 /////
-
-  buttonWork.on('click', function() {
+done -  buttonWork.on('click', function() {
     homer.money += 5;
     homer.energy -= 5;
   });
 
-  buttonEat.on('click', function() {
+done -   buttonEat.on('click', function() {
     homer.food += 5;
     homer.money -= 5;
   });
 
-  buttonSleep.on('click', function() {
+done -   buttonSleep.on('click', function() {
     homer.energy += 10;
     homer.food -= 5;
     homer.money -= 5;

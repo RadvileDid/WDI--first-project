@@ -5,6 +5,7 @@ body {
   box-sizing: content-box;
   margin: auto;
   text-align: center;
+  font-family: Helvetica, sans-serif;
 }
 
 div {
@@ -12,7 +13,7 @@ div {
 }
 
 .screen {
-  margin: 5px 0;
+  margin: 50px 0;
 }
 
 img {
@@ -33,3 +34,41 @@ img {
 .parent{
   overflow: hidden;
 }
+
+.playOptions {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  height: 30px;
+  width: 100px;
+  color: white;
+  background-color: skyBlue;
+  border-radius: 5px;
+  border: 0px;
+  font-size: 16px;
+}
+
+.statBar {
+  background-color: blanchedAlmond;
+}
+
+.moneyBar, .energyBar, .foodBar {
+  background-color: sandyBrown;
+  height: 30px;
+  color: white;
+  font-size: 16px;
+}
+
+/*.moneyBar{
+  width: 100%
+}
+
+.energyBar{
+  width: 100%;
+}*/
+
+/*.foodBar{
+  width: 100%;
+}*/

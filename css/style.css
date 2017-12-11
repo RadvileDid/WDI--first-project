@@ -1,38 +1,48 @@
 
 
+html {
+  background: url("../img/sky.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
 body {
-  width: 960px;
+  width: 810px;
   box-sizing: content-box;
   margin: auto;
   text-align: center;
+  vertical-align: middle;
   font-family: Helvetica, sans-serif;
-}
-
-div {
-  border: 1px solid black;
+  color: white;
+  font-size: 20px;
 }
 
 .screen {
   margin: 50px 0;
+  height: 550px;
 }
 
 img {
-    width: 100px;
-    height: 125px;
+  width: 250px;
+  height: 335px;
+  padding-bottom: 15px;
 }
 
-.childLeft{
+.childLeft, .childRight{
   width: 45%;
   float: left;
-}
-
-.childRight{
-  width: 45%;
-  float: right;
+  padding: 10px;
+  margin: 8px;
 }
 
 .parent{
   overflow: hidden;
+}
+
+.container {
+  background-color: white;
+  color: LightSlateGrey;
+  border: 3px black solid;
+  border-radius: 30px;
 }
 
 .playOptions {
@@ -41,34 +51,63 @@ img {
 }
 
 button {
-  height: 30px;
-  width: 100px;
+  height: 40px;
+  width: 130px;
   color: white;
   background-color: skyBlue;
   border-radius: 5px;
   border: 0px;
   font-size: 16px;
+  margin: 5px;
 }
 
 .statBar {
   background-color: blanchedAlmond;
+  margin-bottom: 10px;
+  margin-top: 6px;
+  border-radius: 10px;
+  width: 300px;
 }
 
 .moneyBar, .energyBar, .foodBar {
   background-color: sandyBrown;
-  height: 30px;
+  height: 40px;
   color: white;
   font-size: 16px;
+  border-radius: 5px;
 }
 
-/*.moneyBar{
-  width: 100%
+p {
+  padding: 30px;
 }
 
-.energyBar{
-  width: 100%;
-}*/
+.timer {
+  height: 40px;
+  width: 85px;
+  color: orangeRed;
+  background-color: black;
+  border-radius: 22px;
+  font-size: 32px;
+  position: absolute;
+  margin: -22px 362px;
+}
 
-/*.foodBar{
-  width: 100%;
-}*/
+.playButtons {
+  padding: 10px;
+  background-color: DodgerBlue;
+  width: 300px;
+}
+
+.smallImg {
+  margin: 5px;
+  height: 30px;
+  width: 34px;
+  float: left;
+  position: absolute;
+  margin-left: 145px;
+}
+
+.buttonsAndBars {
+  margin: 100px 20px;
+  padding: 20px 22px;
+}

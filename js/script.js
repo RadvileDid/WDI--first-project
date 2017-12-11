@@ -10,23 +10,29 @@ $(() => {
     timer();
     statBarsAuto();
     $playButton.css('display', 'none');
+
   }
 
   // timer function - set's the time off from 60 to 0 seconds and stops once 0 is reached
   const $timer = $('.timer');
   let timeRemaining = 60;
   $timer.text(timeRemaining);
+  let timerInterval;
+
+  function clearTimerInterval() {
+    clearInterval(timerInterval);
+  }
 
   function timer() {
-    const timerInterval = setInterval(() => {
+    timerInterval = setInterval(() => {
       timeRemaining--;
       $timer.text(timeRemaining);
       console.log(timeRemaining);
-      if (timeRemaining === 0) {
-        clearInterval(timerInterval);
+      if (timeRemaining === 0){
+        winLoose();
+        clearTimerInterval();
       }
     }, 1000);
-
   }
 
   ///// Status Bars
@@ -43,9 +49,14 @@ $(() => {
   const $moneyBar = $('.moneyBar');
   $moneyBar.text(moneyRemaining);
   let newMoneyWidth;
+  let moneyAutoInterval;
+
+  function clearMoneyInterval() {
+    clearInterval(moneyAutoInterval);
+  }
 
   function moneyBarAuto() {
-    const moneyAutoInterval = setInterval(() => {
+    moneyAutoInterval = setInterval(() => {
       moneyRemaining = moneyRemaining - 5;
       $moneyBar.text(moneyRemaining);
       console.log(moneyRemaining);
@@ -53,7 +64,9 @@ $(() => {
       $moneyBar.css('width', newMoneyWidth);
 
       if (moneyRemaining === 0) {
-        clearInterval(moneyAutoInterval);
+        clearMoneyInterval();
+        winLoose();
+        // clearInterval(moneyAutoInterval);
       }
     }, 1000);
   }
@@ -63,16 +76,23 @@ $(() => {
   const $energyBar = $('.energyBar');
   $energyBar.text(energyRemaining);
   let newEnergyWidth;
+  let energyAutoInterval;
+
+  function clearEnergyInterval() {
+    clearInterval(energyAutoInterval);
+  }
 
   function energyBarAuto() {
-    const energyAutoInterval = setInterval(() => {
+    energyAutoInterval = setInterval(() => {
       energyRemaining= energyRemaining - 10;
       $energyBar.text(energyRemaining);
       newEnergyWidth = energyRemaining + '%' ;
       $energyBar.css('width', newEnergyWidth);
 
       if (energyRemaining === 0) {
+        // clearEnergyInterval();
         clearInterval(energyAutoInterval);
+        winLoose();
       }
     }, 1000);
   }
@@ -82,16 +102,23 @@ $(() => {
   const $foodBar = $('.foodBar');
   $foodBar.text(foodRemaining);
   let newFoodWidth;
+  let foodAutoInterval;
+
+  function clearFoodInterval() {
+    clearInterval(foodAutoInterval);
+  }
 
   function foodBarAuto() {
-    const foodAutoInterval = setInterval(() => {
+    foodAutoInterval = setInterval(() => {
       foodRemaining = foodRemaining - 5;
       $foodBar.text(foodRemaining);
       newFoodWidth = foodRemaining + '%' ;
       $foodBar.css('width', newFoodWidth);
 
       if (foodRemaining === 0) {
+        // clearFoodInterval();
         clearInterval(foodAutoInterval);
+        winLoose();
       }
     }, 1000);
   }
@@ -109,8 +136,7 @@ $(() => {
 
     energyRemaining = energyRemaining - 7;
     $energyBar.text(energyRemaining);
-    // newEnergyWidth= newEnergyWidth + '%' ;
-    // $energyBar.css('width', newEnergyWidth);
+
     console.log(`work removed ${energyRemaining}`);
   });
 
@@ -120,38 +146,51 @@ $(() => {
   $sleepButton.on('click', function() {
     energyRemaining= energyRemaining + 7;
     $energyBar.text(energyRemaining);
-    // newEnergyWidth= newEnergyWidth + '%' ;
-    // $energyBar.css('width', newEnergyWidth);
     console.log(`sleep added ${energyRemaining}`);
 
     moneyRemaining= moneyRemaining - 7;
     $moneyBar.text(moneyRemaining);
-    // newMoneyWidth= newMoneyWidth + '%' ;
-    // $moneyBar.css('width', newMoneyWidth);
     console.log(`sleep removed ${moneyRemaining}`);
 
     foodRemaining= foodRemaining - 7;
     $foodBar.text(foodRemaining);
-    // newFoodWidth= foodRemaining + '%' ;
-    // $foodBar.css('width', newFoodWidth);
     console.log(`sleep removed ${foodRemaining}`);
   });
 
-  // foot button adds to the food bar but removes money
+  // food button adds to the food bar but removes money
   const $foodButton = $('.foodButton');
 
   $foodButton.on('click', function() {
     foodRemaining= foodRemaining + 7;
     $foodBar.text(foodRemaining);
-    // newFoodWidth= foodRemaining + '%' ;
-    // $foodBar.css('width', newFoodWidth);
     console.log(`eating added ${foodRemaining}`);
 
     moneyRemaining= moneyRemaining - 7;
     $moneyBar.text(moneyRemaining);
-    // newMoneyWidth= newMoneyWidth + '%' ;
-    // $moneyBar.css('width', newMoneyWidth);
     console.log(`eating removed ${moneyRemaining}`);
   });
+
+  function stop() {
+    clearTimerInterval();
+    clearEnergyInterval();
+    clearMoneyInterval();
+    clearFoodInterval();
+  }
+
+
+  //
+  function winLoose() {
+    if( (foodRemaining === 0) || ( moneyRemaining === 0) || (energyRemaining === 0)) {
+      stop();
+      console.log('You lost!');
+      //   hide 2.3;
+      //   unhide
+    } else if ((timeRemaining === 0) && ((foodRemaining > 0) && ( moneyRemaining > 0) || (energyRemaining > 0))) {
+      stop();
+      console.log('You win!');
+    //   hide 2.3 screen;
+    //   unhide 3.2 screen;
+    }
+  }
 
 });

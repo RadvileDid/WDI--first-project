@@ -2,11 +2,55 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My First Website Online</title>
+    <title>Keep Homer alive</title>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1>My First Website Online</h1>
+
+    <div class="screen1 screen">
+      <h1>Keep Homer alive!</h1>
+      <div class="parent">
+        <div class="childLeft">
+          <h2>Instructions</h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.<p>
+        </div>
+        <div class="childRight">
+          <img class="bigImg" src="img/simpsons_PNG29.png" alt="Homer Simpson">
+          <div>
+            <button type="button" name="start">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen2 screen">
+      <div class="timer">Timer</div>
+      <div class="buttonsAndBars">
+        <div class="playOptions">
+            <button class="playButtons" type="button" name="work">Work</button>
+            <button class="playButtons" type="button" name="sleep">Sleep</button>
+            <button class="playButtons" type="button" name="food">Eat</button>
+        </div>
+        <div class="statBars">
+          <div class="statBar moneyBar">Money bar</div>
+          <div class="statBar energyBar">Energy bar</div>
+          <div class="statBar foodBar">Food bar</div>
+        </div>
+        <button type="button" name="play" class="playButton">Play</button>
+      </div>
+    </div>
+
+    <div class="screen3">
+      <div class="timer">Timer</div>
+      <div>
+        <p>You lost!/Woohoo, you did it!</p>
+        <img class="bigImg" src="img/simpsons_PNG29.png" alt="Homer Simpson">
+      </div>
+      <div class="gameEndButtons">
+        <button type="button" name="playAgain">Play again</button>
+        <button type="button" name="home">Home</button>
+      </div>
+    </div>
   </body>
 </html>

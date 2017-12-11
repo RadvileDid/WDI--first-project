@@ -1,0 +1,103 @@
+
+buttonStart.on('click', start);
+
+function start () {
+  unhide screen 2.1;
+  hide 1
+}
+
+////
+
+buttonPlay.on('click', play);
+
+function play() {
+  timer();
+  statBarsAuto();
+  hide buttonPlay;
+}
+
+///
+
+function timer() {
+  setInterval;
+};
+
+function statBarsAuto() {
+  moneyAuto();
+  energyAuto();
+  foodAuto();
+};
+
+////
+
+function moneyAuto() {
+  setInterval;
+  money -= 5;
+}
+
+function energyAuto() {
+  setInterval;
+  energy -= 10;
+}
+
+function hungerAuto() {
+  setInterval;
+  food -= 5;
+}
+
+/////
+
+  buttonWork.on('click', function() {
+    homer.money += 5;
+    homer.energy -= 5;
+  });
+
+  buttonEat.on('click', function() {
+    homer.food += 5;
+    homer.money -= 5;
+  });
+
+  buttonSleep.on('click', function() {
+    homer.energy += 10;
+    homer.food -= 5;
+    homer.money -= 5;
+  });
+
+////
+
+function stop() {
+  timer clearInterval;
+  moneyAuto clearInterval;
+  energyAuto clearInterval;
+  foodAuto clearInterval;
+}
+
+if( money || energy || food = 0) {
+  stop();
+  hide 2.3;
+  unhide
+} else if ( timerVal = 0:00 / 0) && money && energy && food > 0) {
+  stop();
+  hide 2.3 screen;
+  unhide 3.2 screen;
+};
+
+////
+
+buttonHome.on('click', home);
+
+function home() {
+  hide screen 3.(this);
+  unhide screen1
+}
+
+////
+
+buttonPlayAgain.on('click', playAgain);
+
+function playAgain() {
+  hide 3.(this screen);
+  unhide 2.1 screen;
+}
+
+////////

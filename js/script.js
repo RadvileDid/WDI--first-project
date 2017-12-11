@@ -1,1 +1,1 @@
-alert('Loaded js');
+console.log('I am running');

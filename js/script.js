@@ -16,7 +16,6 @@ $(() => {
   // let difficulty = 'easy';
 
   // clicking on the start button hides the screen 1
-
   const $startButton = $('.startButton');
 
   $startButton.on('click', hidescreen1addScreen2);
@@ -27,7 +26,6 @@ $(() => {
   }
 
   //////
-
   $playButton.on('click', play);
 
   function play() {
@@ -151,21 +149,24 @@ $(() => {
   // Work button adds money and removes energy
   const $buttonWork = $('.workButton');
 
-  $buttonWork.on('click', function() {
+  $buttonWork.on('click', moneyBarManual);
+
+  function moneyBarManual() {
     moneyRemaining= moneyRemaining + 4;
     $moneyBar.text(moneyRemaining);
-    // $moneyBar.css('width', newMoneyWidth);
     console.log(`work added ${moneyRemaining} money (added)`);
 
     energyRemaining = energyRemaining - 2;
     $energyBar.text(energyRemaining);
     console.log(`work removed ${energyRemaining} energy (removed)`);
-  });
+  }
 
   // sleep button adds energy removes money and foodBar
   const $sleepButton = $('.sleepButton');
 
-  $sleepButton.on('click', function() {
+  $sleepButton.on('click', sleepBarManual);
+
+  function sleepBarManual() {
     energyRemaining= energyRemaining + 4;
     $energyBar.text(energyRemaining);
     console.log(`after sleep, new energy is ${energyRemaining} (added)`);
@@ -177,12 +178,13 @@ $(() => {
     foodRemaining= foodRemaining - 2;
     $foodBar.text(foodRemaining);
     console.log(`after sleep, new food is ${foodRemaining} (removed)`);
-  });
+  }
 
   // food button adds to the food bar but removes money
   const $foodButton = $('.foodButton');
+  $foodButton.on('click', foodBarManual);
 
-  $foodButton.on('click', function() {
+  function foodBarManual() {
     foodRemaining= foodRemaining + 4;
     $foodBar.text(foodRemaining);
     console.log(`after eating, new food is ${foodRemaining} (added)`);
@@ -190,10 +192,9 @@ $(() => {
     moneyRemaining= moneyRemaining - 2;
     $moneyBar.text(moneyRemaining);
     console.log(`after eating, new money is ${moneyRemaining} (removed)`);
-  });
+  }
 
   //
-
   function stop() {
     clearTimerInterval();
     clearEnergyInterval();
@@ -231,7 +232,10 @@ $(() => {
     }
   }
 
+  //screen 3 play again & home buttons
   const $playAgainButton = $('.playAgainButton');
+  const $homeButton = $('.homeButton');
+
 
   $playAgainButton.on('click', playAgainClicked);
 
@@ -239,8 +243,6 @@ $(() => {
     $screen2.removeClass('hidden');
     $screen3.addClass('hidden');
   }
-
-  const $homeButton = $('.homeButton');
 
   $homeButton.on('click', homeClicked);
 

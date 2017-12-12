@@ -7,25 +7,42 @@ $(() => {
   const $screen2 = $('.screen2');
   const $screen3 = $('.screen3');
 
+  //sound
   const woohooSound = new Audio('audio/woohoo.mp3');
   woohooSound.src = 'audio/woohoo.mp3';
 
   const whySound = new Audio('audio/why.mp3');
   whySound.src = 'audio/why.mp3';
 
-  // let difficulty = 'easy';
+  //play options/buttons
+  const $foodButton = $('.foodButton');
+  const $sleepButton = $('.sleepButton');
+  const $buttonWork = $('.workButton');
 
   // clicking on the start button hides the screen 1
-  const $startButton = $('.startButton');
+  const $easyButton = $('.easyButton');
+  const $hardButton = $('.hardButton');
 
-  $startButton.on('click', hidescreen1addScreen2);
+  $easyButton.on('click', easyMode);
+  $hardButton.on('click', hardMode);
 
-  function hidescreen1addScreen2() {
+  function easyMode() {
     $screen1.addClass('hidden');
     $screen2.removeClass('hidden');
+    $foodButton.on('click', foodBarEasy);
+    $sleepButton.on('click', sleepBarEasy);
+    $buttonWork.on('click', moneyBarEasy);
   }
 
-  //////
+  function hardMode() {
+    $screen1.addClass('hidden');
+    $screen2.removeClass('hidden');
+    $foodButton.on('click', foodBarHard);
+    $sleepButton.on('click', sleepBarHard);
+    $buttonWork.on('click', moneyBarHard);
+  }
+
+  ////// clicked button play - the timer sets off, the status bars start to decrease automatically end the play button disappears
   $playButton.on('click', play);
 
   function play() {
@@ -57,8 +74,7 @@ $(() => {
     clearInterval(timerInterval);
   }
 
-  ///// Status Bars
-
+  /////////////////
   function statBarsAuto() {
     moneyBarAuto();
     energyBarAuto();
@@ -145,13 +161,9 @@ $(() => {
     clearInterval(foodAutoInterval);
   }
 
-  // play buttons
+  //////////////////////////////////// play buttons EASY mode
   // Work button adds money and removes energy
-  const $buttonWork = $('.workButton');
-
-  $buttonWork.on('click', moneyBarManual);
-
-  function moneyBarManual() {
+  function moneyBarEasy() {
     moneyRemaining= moneyRemaining + 4;
     $moneyBar.text(moneyRemaining);
     console.log(`work added ${moneyRemaining} money (added)`);
@@ -162,11 +174,7 @@ $(() => {
   }
 
   // sleep button adds energy removes money and foodBar
-  const $sleepButton = $('.sleepButton');
-
-  $sleepButton.on('click', sleepBarManual);
-
-  function sleepBarManual() {
+  function sleepBarEasy() {
     energyRemaining= energyRemaining + 4;
     $energyBar.text(energyRemaining);
     console.log(`after sleep, new energy is ${energyRemaining} (added)`);
@@ -181,10 +189,7 @@ $(() => {
   }
 
   // food button adds to the food bar but removes money
-  const $foodButton = $('.foodButton');
-  $foodButton.on('click', foodBarManual);
-
-  function foodBarManual() {
+  function foodBarEasy() {
     foodRemaining= foodRemaining + 4;
     $foodBar.text(foodRemaining);
     console.log(`after eating, new food is ${foodRemaining} (added)`);
@@ -194,16 +199,45 @@ $(() => {
     console.log(`after eating, new money is ${moneyRemaining} (removed)`);
   }
 
-  //
-  function stop() {
-    clearTimerInterval();
-    clearEnergyInterval();
-    clearMoneyInterval();
-    clearFoodInterval();
+  //////////////////////////////////// play buttons HARD mode
+  // Work button adds money and removes energy
+  function moneyBarHard() {
+    moneyRemaining= moneyRemaining + 6;
+    $moneyBar.text(moneyRemaining);
+    console.log(`work added ${moneyRemaining} money (added)`);
+
+    energyRemaining = energyRemaining - 8;
+    $energyBar.text(energyRemaining);
+    console.log(`work removed ${energyRemaining} energy (removed)`);
   }
 
+  // sleep button adds energy removes money and foodBar
+  function sleepBarHard() {
+    energyRemaining= energyRemaining + 4;
+    $energyBar.text(energyRemaining);
+    console.log(`after sleep, new energy is ${energyRemaining} (added)`);
 
-  //winning/loosing conditions
+    moneyRemaining= moneyRemaining - 8;
+    $moneyBar.text(moneyRemaining);
+    console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
+
+    foodRemaining= foodRemaining - 8;
+    $foodBar.text(foodRemaining);
+    console.log(`after sleep, new food is ${foodRemaining} (removed)`);
+  }
+
+  // food button adds to the food bar but removes money
+  function foodBarHard() {
+    foodRemaining= foodRemaining + 4;
+    $foodBar.text(foodRemaining);
+    console.log(`after eating, new food is ${foodRemaining} (added)`);
+
+    moneyRemaining= moneyRemaining - 4;
+    $moneyBar.text(moneyRemaining);
+    console.log(`after eating, new money is ${moneyRemaining} (removed)`);
+  }
+
+  //winning/loosing conditions, displaying result, img and the sound
   const $winLooseResult = $('.winLooseResult');
   let newText = '';
   $winLooseResult.text(newText);
@@ -213,42 +247,48 @@ $(() => {
     $screen3.removeClass('hidden');
   }
 
-
   function winLoose() {
     if( (foodRemaining <= 0) || ( moneyRemaining <= 0) || (energyRemaining <= 0)) {
       stop();
       hidescreen2addScreen3();
-      whySound.play();
-      newText = 'Doh, why you little $%@8*, you lost!';
-      $winLooseResult.text(newText);
-      $winLooseResult.after('<img src="img/simpsons_PNG94.png" />');
+      win();
     } else if ((timeRemaining === 0) && ((foodRemaining > 0) && ( moneyRemaining > 0) || (energyRemaining > 0))) {
       stop();
       hidescreen2addScreen3();
-      woohooSound.play();
-      newText = 'Woohoo, you won!';
-      $winLooseResult.text(newText);
-      $winLooseResult.after('<img src="img/Homer_simpsonwoohooo.gif" width="140px" height="150px"/>');
+      loose();
     }
   }
 
-  //screen 3 play again & home buttons
-  const $playAgainButton = $('.playAgainButton');
-  const $homeButton = $('.homeButton');
-
-
-  $playAgainButton.on('click', playAgainClicked);
-
-  function playAgainClicked() {
-    $screen2.removeClass('hidden');
-    $screen3.addClass('hidden');
+  function stop() {
+    clearTimerInterval();
+    clearEnergyInterval();
+    clearMoneyInterval();
+    clearFoodInterval();
   }
 
+  function win() {
+    whySound.play();
+    newText = 'Doh, why you little $%@8*, you lost!';
+    $winLooseResult.text(newText);
+    $winLooseResult.after('<img src="img/simpsons_PNG94.png" />');
+  }
+
+  function loose() {
+    woohooSound.play();
+    newText = 'Woohoo, you won!';
+    $winLooseResult.text(newText);
+    $winLooseResult.after('<img src="img/Homer_simpsonwoohooo.gif" width="140px" height="150px"/>');
+  }
+
+
+  //screen 3 home button clicked
+  const $homeButton = $('.homeButton');
   $homeButton.on('click', homeClicked);
 
   function homeClicked() {
     $screen1.removeClass('hidden');
     $screen3.addClass('hidden');
+    //here need to reset all the remaining amounts and so on
   }
 
 });

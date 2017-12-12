@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-
     <div class="screen1 screen">
       <h1>Keep Homer alive!</h1>
       <div class="parent container">
@@ -19,13 +18,13 @@
         <div class="childRight">
           <img class="bigImg" src="img/simpsons_PNG29.png" alt="Homer Simpson">
           <div>
-            <button type="button" name="start">Start</button>
+            <button type="button" name="start" class="startButton">Start</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="screen2 screen container">
+    <div class="screen2 screen container hidden">
       <div class="timer"></div>
       <div class="buttonsAndBars parent">
         <div class="playOptions childLeft">
@@ -59,15 +58,14 @@
       </div>
     </div>
 
-    <div class="screen3 container screen">
+    <div class="screen3 container screen hidden">
       <div class="timer"></div>
       <div>
-        <p>You lost!/Woohoo, you did it!</p>
-        <img class="bigImg" src="img/simpsons_PNG4.png" alt="Homer Simpson">
+        <p class="winLooseResult"></p>
       </div>
       <div class="gameEndButtons">
-        <button type="button" name="playAgain">Play again</button>
-        <button type="button" name="home">Home</button>
+        <button type="button" name="playAgain" class="playAgainButton">Play again</button>
+        <button type="button" name="home" class="homeButton">Home</button>
       </div>
     </div>
   </body>

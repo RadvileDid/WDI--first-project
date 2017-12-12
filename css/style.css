@@ -21,8 +21,9 @@ body {
   height: 550px;
 }
 
+
 img {
-  width: 250px;
+  width: 300px;
   height: 335px;
   padding-bottom: 15px;
 }
@@ -110,4 +111,8 @@ p {
 .buttonsAndBars {
   margin: 100px 20px;
   padding: 20px 22px;
+}
+
+.hidden {
+  display: none;
 }

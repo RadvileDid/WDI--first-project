@@ -6,67 +6,75 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="screen1 screen">
-      <h1>Keep Homer alive!</h1>
-      <div class="parent container">
-        <div class="childLeft">
-          <h2>Instructions</h2>
-          <p>Keep your Homer alive by feeding him, making him go to work and putting him to sleep. <br>Make sure all bars have someting left before the time runs out!<br>Get ready, you have 60 seconds to go.<p>
-        </div>
-        <div class="childRight">
-          <img class="bigImg" src="img/simpsons_PNG29.png" alt="Homer Simpson">
-          <div>
-            <button type="button" name="easy" class="easyButton">Start easy</button>
-            <button type="button" name="hard" class="hardButton">Start hard</button>
+    <main>
+      <div class="screen1 screen">
+        <h1 class="animated infinite flash">Keep Homer alive!</h1>
+        <div class="parent container">
+          <div class="childLeft">
+            <div class="instructions">
+              <h2>Instructions</h2>
+              <p>Keep your Homer alive by making sure he gets enough rest, food and money to survive. <br>You have 60 seconds and remember, all the bars have to have some resources left.</br>Good luck!
+            </div>
+          </div>
+          <div class="childRight">
+            <img class="bigImg" src="img/simpsons_PNG29.png" alt="Homer Simpson">
+            <div>
+              <button type="button" name="easy" class="easyButton">Start easy</button>
+              <button type="button" name="hard" class="hardButton">Start hard</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="screen2 screen container hidden">
-      <div class="timer"></div>
-      <div class="buttonsAndBars parent">
-        <div class="playOptions childLeft">
-            <button class="playButtons workButton" type="button" name="work">Go to work</button>
-            <button class="playButtons sleepButton" type="button" name="sleep">Go to sleep</button>
-            <button class="playButtons foodButton" type="button" name="food">Eat a doughnut</button>
+      <div class="screen2 screen container hidden">
+        <div class="timerBackground">
+          <div class="timer"></div>
         </div>
-        <div class="statBars childRight">
-          <div class="bar1">
-            <img src="img/PIC-Blog-1-Whats-your-budget.png" class="smallImg">
-            <div class="statBar">
-              <div class="moneyBar"></div>
+        <div class="buttonsAndBars parent">
+          <div class="playOptions childLeft">
+              <button class="playButtons workButton" type="button" name="work" disabled>Go to work</button>
+              <button class="playButtons sleepButton" type="button" name="sleep" disabled>Go to sleep</button>
+              <button class="playButtons foodButton" type="button" name="food" disabled>Eat a doughnut</button>
+          </div>
+          <div class="statBars childRight">
+            <div class="bar1">
+              <img src="img/PIC-Blog-1-Whats-your-budget.png" class="smallImg">
+              <div class="statBar">
+                <div class="moneyBar"></div>
+              </div>
+            </div>
+            <div class="bar2">
+              <img src="img/Monster_Couch_Menu.png" class="smallImg">
+              <div class="statBar">
+                <div class="energyBar"></div>
+              </div>
+            </div>
+            <div class="bar3">
+              <img src="img/donut_PNG98.png" class="smallImg">
+              <div class="statBar">
+                <div class="foodBar"></div>
+              </div>
             </div>
           </div>
-          <div class="bar2">
-            <img src="img/Monster_Couch_Menu.png" class="smallImg">
-            <div class="statBar">
-              <div class="energyBar"></div>
-            </div>
+          <div class="playButtontest">
+            <button type="button" name="play" class="playButton  animated infinite pulse">Play</button>
           </div>
-          <div class="bar3">
-            <img src="img/donut_PNG98.png" class="smallImg">
-            <div class="statBar">
-              <div class="foodBar"></div>
-            </div>
-          </div>
-        </div>
-        <div class="playButtontest">
-          <button type="button" name="play" class="playButton">Play</button>
         </div>
       </div>
-    </div>
 
-    <div class="screen3 container screen hidden">
-      <div class="timer"></div>
-      <div>
-        <p class="winLooseResult"></p>
+      <div class="screen3 container screen hidden">
+        <div class="timer timer2"></div>
+        <div>
+          <p class="winLooseResult"></p>
+        </div>
+        <div class="gameEndButton">
+          <button type="button" name="home" class="homeButton">Home</button>
+        </div>
       </div>
-      <div class="gameEndButton">
-        <button type="button" name="home" class="homeButton">Home</button>
-      </div>
-    </div>
+    </main>
   </body>
 </html>

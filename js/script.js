@@ -7,6 +7,7 @@ $(() => {
   const $screen2 = $('.screen2');
   const $screen3 = $('.screen3');
 
+
   //sound
   const woohooSound = new Audio('audio/woohoo.mp3');
   woohooSound.src = 'audio/woohoo.mp3';
@@ -25,6 +26,7 @@ $(() => {
 
   $easyButton.on('click', easyMode);
   $hardButton.on('click', hardMode);
+
 
   function easyMode() {
     $screen1.addClass('hidden');
@@ -49,6 +51,9 @@ $(() => {
     timer();
     statBarsAuto();
     $playButton.css('display', 'none');
+    $buttonWork.removeAttr('disabled');
+    $sleepButton.removeAttr('disabled');
+    $foodButton.removeAttr('disabled');
   }
 
   // timer function - set's the time off from 60 to 0 seconds and stops once 0 is reached
@@ -59,6 +64,7 @@ $(() => {
   let timerInterval;
 
   function timer() {
+    $timer.addClass('animated infinite flash');
     timerInterval = setInterval(() => {
       timeRemaining--;
       $timer.text(timeRemaining);
@@ -206,22 +212,22 @@ $(() => {
     $moneyBar.text(moneyRemaining);
     console.log(`work added ${moneyRemaining} money (added)`);
 
-    energyRemaining = energyRemaining - 8;
+    energyRemaining = energyRemaining - 4;
     $energyBar.text(energyRemaining);
     console.log(`work removed ${energyRemaining} energy (removed)`);
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarHard() {
-    energyRemaining= energyRemaining + 4;
+    energyRemaining= energyRemaining + 6;
     $energyBar.text(energyRemaining);
     console.log(`after sleep, new energy is ${energyRemaining} (added)`);
 
-    moneyRemaining= moneyRemaining - 8;
+    moneyRemaining= moneyRemaining - 4;
     $moneyBar.text(moneyRemaining);
     console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
 
-    foodRemaining= foodRemaining - 8;
+    foodRemaining= foodRemaining - 4;
     $foodBar.text(foodRemaining);
     console.log(`after sleep, new food is ${foodRemaining} (removed)`);
   }
@@ -252,10 +258,12 @@ $(() => {
       stop();
       hidescreen2addScreen3();
       win();
+      $timer.removeClass('animated infinite flash');
     } else if ((timeRemaining === 0) && ((foodRemaining > 0) && ( moneyRemaining > 0) || (energyRemaining > 0))) {
       stop();
       hidescreen2addScreen3();
       loose();
+      $timer.removeClass('animated infinite flash');
     }
   }
 
@@ -277,7 +285,7 @@ $(() => {
     woohooSound.play();
     newText = 'Woohoo, you won!';
     $winLooseResult.text(newText);
-    $winLooseResult.after('<img src="img/Homer_simpsonwoohooo.gif" width="140px" height="150px"/>');
+    $winLooseResult.after('<img src="img/Homer_simpsonwoohooo.gif" width="380px"/>');
   }
 
 
@@ -288,7 +296,36 @@ $(() => {
   function homeClicked() {
     $screen1.removeClass('hidden');
     $screen3.addClass('hidden');
-    //here need to reset all the remaining amounts and so on
+    resetEnergy();
+    resetFood();
+    resetMoney();
+    resetTimer();
+  }
+
+  function resetMoney() {
+    moneyRemaining = 100;
+    $moneyBar.text(moneyRemaining);
+    newMoneyWidth= moneyRemaining + '%' ;
+    $moneyBar.css('width', newMoneyWidth);
+  }
+
+  function resetEnergy() {
+    energyRemaining = 100;
+    $energyBar.text(energyRemaining);
+    newEnergyWidth= energyRemaining + '%' ;
+    $energyBar.css('width', newEnergyWidth);
+  }
+
+  function resetFood() {
+    foodRemaining = 100;
+    $foodBar.text(foodRemaining);
+    newFoodWidth= foodRemaining + '%' ;
+    $foodBar.css('width', newFoodWidth);
+  }
+
+  function resetTimer() {
+    timeRemaining = 60;
+    $timer.text(timeRemaining);
   }
 
 });

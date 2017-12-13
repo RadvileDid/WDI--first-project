@@ -1,6 +1,5 @@
 * {
   box-sizing: content-box;
-  outline: blue solid 1px;
 }
 
 html {
@@ -107,6 +106,18 @@ button {
   margin: 5px;
 }
 
+.easyButton, .hardButton{
+  margin: 5px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button.playButtons:active{
+  background: #76d6ff;
+}
+
 .screen1parent{
   margin: 2px;
 }
@@ -169,6 +180,8 @@ p {
 
 .timer2 {
   margin: -20px 40px;
+  left: 50%;
+      transform: translateX(-100%);
 }
 
 .timerBackground{
@@ -177,7 +190,8 @@ p {
   height: 40px;
   position: absolute;
   width: 85px;
-  margin: -20px 40px;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .hidden {

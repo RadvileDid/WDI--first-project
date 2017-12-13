@@ -283,6 +283,8 @@ $(() => {
     resetFood();
     resetMoney();
     resetTimer();
+    $winImg.addClass('hidden');
+    $looseImg.addClass('hidden');
   }
 
   function resetMoney() {

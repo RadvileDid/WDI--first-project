@@ -91,7 +91,6 @@ $(() => {
 
   let moneyRemaining = 100;
   const $moneyBar = $('.moneyBar');
-  $moneyBar.text(moneyRemaining);
   let newMoneyWidth;
 
   let moneyAutoInterval;
@@ -99,7 +98,6 @@ $(() => {
   function moneyBarAuto() {
     moneyAutoInterval = setInterval(() => {
       moneyRemaining = moneyRemaining - 2;
-      $moneyBar.text(moneyRemaining);
       console.log(moneyRemaining);
       newMoneyWidth= moneyRemaining + '%' ;
       $moneyBar.css('width', newMoneyWidth);
@@ -118,7 +116,6 @@ $(() => {
   //energy status bar, decreasing automatically.
   let energyRemaining = 100;
   const $energyBar = $('.energyBar');
-  $energyBar.text(energyRemaining);
   let newEnergyWidth;
 
   let energyAutoInterval;
@@ -126,7 +123,6 @@ $(() => {
   function energyBarAuto() {
     energyAutoInterval = setInterval(() => {
       energyRemaining= energyRemaining - 4;
-      $energyBar.text(energyRemaining);
       newEnergyWidth = energyRemaining + '%' ;
       $energyBar.css('width', newEnergyWidth);
 
@@ -144,7 +140,6 @@ $(() => {
   //food status bar, decreasing automatically
   let foodRemaining = 100;
   const $foodBar = $('.foodBar');
-  $foodBar.text(foodRemaining);
   let newFoodWidth;
 
   let foodAutoInterval;
@@ -152,7 +147,6 @@ $(() => {
   function foodBarAuto() {
     foodAutoInterval = setInterval(() => {
       foodRemaining = foodRemaining - 2;
-      $foodBar.text(foodRemaining);
       newFoodWidth = foodRemaining + '%' ;
       $foodBar.css('width', newFoodWidth);
 
@@ -171,37 +165,30 @@ $(() => {
   // Work button adds money and removes energy
   function moneyBarEasy() {
     moneyRemaining= moneyRemaining + 4;
-    $moneyBar.text(moneyRemaining);
     console.log(`work added ${moneyRemaining} money (added)`);
 
     energyRemaining = energyRemaining - 2;
-    $energyBar.text(energyRemaining);
     console.log(`work removed ${energyRemaining} energy (removed)`);
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarEasy() {
     energyRemaining= energyRemaining + 4;
-    $energyBar.text(energyRemaining);
     console.log(`after sleep, new energy is ${energyRemaining} (added)`);
 
     moneyRemaining= moneyRemaining - 2;
-    $moneyBar.text(moneyRemaining);
     console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
 
     foodRemaining= foodRemaining - 2;
-    $foodBar.text(foodRemaining);
     console.log(`after sleep, new food is ${foodRemaining} (removed)`);
   }
 
   // food button adds to the food bar but removes money
   function foodBarEasy() {
     foodRemaining= foodRemaining + 4;
-    $foodBar.text(foodRemaining);
     console.log(`after eating, new food is ${foodRemaining} (added)`);
 
     moneyRemaining= moneyRemaining - 2;
-    $moneyBar.text(moneyRemaining);
     console.log(`after eating, new money is ${moneyRemaining} (removed)`);
   }
 
@@ -209,37 +196,30 @@ $(() => {
   // Work button adds money and removes energy
   function moneyBarHard() {
     moneyRemaining= moneyRemaining + 6;
-    $moneyBar.text(moneyRemaining);
     console.log(`work added ${moneyRemaining} money (added)`);
 
     energyRemaining = energyRemaining - 4;
-    $energyBar.text(energyRemaining);
     console.log(`work removed ${energyRemaining} energy (removed)`);
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarHard() {
     energyRemaining= energyRemaining + 6;
-    $energyBar.text(energyRemaining);
     console.log(`after sleep, new energy is ${energyRemaining} (added)`);
 
     moneyRemaining= moneyRemaining - 4;
-    $moneyBar.text(moneyRemaining);
     console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
 
     foodRemaining= foodRemaining - 4;
-    $foodBar.text(foodRemaining);
     console.log(`after sleep, new food is ${foodRemaining} (removed)`);
   }
 
   // food button adds to the food bar but removes money
   function foodBarHard() {
     foodRemaining= foodRemaining + 4;
-    $foodBar.text(foodRemaining);
     console.log(`after eating, new food is ${foodRemaining} (added)`);
 
     moneyRemaining= moneyRemaining - 4;
-    $moneyBar.text(moneyRemaining);
     console.log(`after eating, new money is ${moneyRemaining} (removed)`);
   }
 
@@ -304,21 +284,18 @@ $(() => {
 
   function resetMoney() {
     moneyRemaining = 100;
-    $moneyBar.text(moneyRemaining);
     newMoneyWidth= moneyRemaining + '%' ;
     $moneyBar.css('width', newMoneyWidth);
   }
 
   function resetEnergy() {
     energyRemaining = 100;
-    $energyBar.text(energyRemaining);
     newEnergyWidth= energyRemaining + '%' ;
     $energyBar.css('width', newEnergyWidth);
   }
 
   function resetFood() {
     foodRemaining = 100;
-    $foodBar.text(foodRemaining);
     newFoodWidth= foodRemaining + '%' ;
     $foodBar.css('width', newFoodWidth);
   }

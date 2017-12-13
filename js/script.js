@@ -275,6 +275,7 @@ $(() => {
 
   function homeClicked() {
     $screen1.removeClass('hidden');
+    $playButton.css('display', '');
     $screen3.addClass('hidden');
     resetEnergy();
     resetFood();

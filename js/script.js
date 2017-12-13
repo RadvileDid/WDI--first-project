@@ -254,21 +254,23 @@ $(() => {
     clearFoodInterval();
   }
 
+  const $winImg = $('.winImg');
+  const $looseImg = $('.looseImg');
+
   function win() {
     whySound.play();
     newText = 'Doh, why you little $%@8*, you lost!';
     $winLooseResult.text(newText);
-    $winLooseResult.after('<img src="img/simpsons_PNG94.png" />');
+    $looseImg.removeClass('hidden');
   }
 
   function loose() {
     woohooSound.play();
     newText = 'Woohoo, you won!';
     $winLooseResult.text(newText);
-    $winLooseResult.after('<img src="img/Homer_simpsonwoohooo.gif" width="380px"/>');
+    $winImg.removeClass('hidden');
+
   }
-
-
   //screen 3 home button clicked
   const $homeButton = $('.homeButton');
   $homeButton.on('click', homeClicked);

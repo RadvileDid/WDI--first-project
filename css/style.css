@@ -52,6 +52,14 @@ img {
   margin-left: 114px;
 }
 
+.looseImg {
+  width: 250px;
+}
+
+.winImg {
+  width: 320px;
+}
+
 /*layout*/
 .parent{
   overflow: hidden;

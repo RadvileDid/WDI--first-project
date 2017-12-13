@@ -1,14 +1,12 @@
 $(() => {
 
-  console.log('I am running');
-
   const $playButton = $('.playButton');
   const $screen1 = $('.screen1');
   const $screen2 = $('.screen2');
   const $screen3 = $('.screen3');
 
 
-  //sound
+  //sounds for win or loose
   const woohooSound = new Audio('audio/woohoo.mp3');
   woohooSound.src = 'audio/woohoo.mp3';
 
@@ -28,6 +26,7 @@ $(() => {
   $hardButton.on('click', hardMode);
 
 
+ // functions for the modes easy or hard selections
   function easyMode() {
     $screen1.addClass('hidden');
     $screen2.removeClass('hidden');
@@ -44,7 +43,7 @@ $(() => {
     $buttonWork.on('click', moneyBarHard);
   }
 
-  ////// clicked button play - the timer sets off, the status bars start to decrease automatically end the play button disappears
+  // clicked button play - the timer sets off, the status bars start to decrease automatically end the play button disappears
   $playButton.on('click', play);
 
   function play() {
@@ -60,7 +59,6 @@ $(() => {
   const $timer = $('.timer');
   let timeRemaining = 60;
   $timer.text(timeRemaining);
-
   let timerInterval;
 
   function timer() {
@@ -68,7 +66,6 @@ $(() => {
     timerInterval = setInterval(() => {
       timeRemaining--;
       $timer.text(timeRemaining);
-      console.log(timeRemaining);
       if (timeRemaining === 0){
         clearTimerInterval();
         winLoose();
@@ -80,150 +77,152 @@ $(() => {
     clearInterval(timerInterval);
   }
 
-  /////////////////
+  // all 3 status bars will start decreasing automatically using the interval set
   function statBarsAuto() {
     moneyBarAuto();
     energyBarAuto();
     foodBarAuto();
   }
 
-  //money status bar, decreasing automatically
-
+  //money status bar, decreasing automatically and if the bar reached 0, loose event is executed
   let moneyRemaining = 100;
   const $moneyBar = $('.moneyBar');
   let newMoneyWidth;
-
   let moneyAutoInterval;
 
   function moneyBarAuto() {
-    moneyAutoInterval = setInterval(() => {
-      moneyRemaining = moneyRemaining - 2;
-      console.log(moneyRemaining);
-      newMoneyWidth= moneyRemaining + '%' ;
-      $moneyBar.css('width', newMoneyWidth);
+    moneyAutoInterval = setInterval(moneyBarAutoUpdate, 1000);
+  }
 
-      if ((moneyRemaining === 0) || (moneyRemaining < 1)) {
-        clearMoneyInterval();
-        winLoose();
-      }
-    }, 1000);
+  function moneyBarAutoUpdate() {
+    moneyRemaining = moneyRemaining - 2;
+    moneyBarUpdate();
+    if ((moneyRemaining === 0) || (moneyRemaining < 1)) {
+      clearMoneyInterval();
+      winLoose();
+    }
+  }
+
+  function moneyBarUpdate() {
+    newMoneyWidth= moneyRemaining + '%' ;
+    $moneyBar.css('width', newMoneyWidth);
   }
 
   function clearMoneyInterval() {
     clearInterval(moneyAutoInterval);
   }
 
-  //energy status bar, decreasing automatically.
+  //energy status bar, decreasing automatically  and if the bar reached 0, loose event is executed
   let energyRemaining = 100;
   const $energyBar = $('.energyBar');
   let newEnergyWidth;
-
   let energyAutoInterval;
 
   function energyBarAuto() {
-    energyAutoInterval = setInterval(() => {
-      energyRemaining= energyRemaining - 4;
-      newEnergyWidth = energyRemaining + '%' ;
-      $energyBar.css('width', newEnergyWidth);
+    energyAutoInterval = setInterval(energyBarAutoUpdate , 1000);
+  }
 
-      if ((energyRemaining === 0) || (energyRemaining < 1)) {
-        clearEnergyInterval();
-        winLoose();
-      }
-    }, 1000);
+  function energyBarAutoUpdate() {
+    energyRemaining= energyRemaining - 4;
+    energyBarUpdate();
+    if ((energyRemaining === 0) || (energyRemaining < 1)) {
+      clearEnergyInterval();
+      winLoose();
+    }
+  }
+
+  function energyBarUpdate() {
+    newEnergyWidth = energyRemaining + '%' ;
+    $energyBar.css('width', newEnergyWidth);
   }
 
   function clearEnergyInterval() {
     clearInterval(energyAutoInterval);
   }
 
-  //food status bar, decreasing automatically
+  //food status bar, decreasing automatically  and if the bar reached 0, loose event is executed
   let foodRemaining = 100;
   const $foodBar = $('.foodBar');
   let newFoodWidth;
-
   let foodAutoInterval;
 
   function foodBarAuto() {
-    foodAutoInterval = setInterval(() => {
-      foodRemaining = foodRemaining - 2;
-      newFoodWidth = foodRemaining + '%' ;
-      $foodBar.css('width', newFoodWidth);
+    foodAutoInterval = setInterval(foodBarAutoUpdate, 1000);
+  }
 
-      if ((foodRemaining === 0) || (foodRemaining < 1)) {
-        clearFoodInterval();
-        winLoose();
-      }
-    }, 1000);
+  function foodBarAutoUpdate() {
+    foodRemaining = foodRemaining - 2;
+    foodBarUpdate();
+    if ((foodRemaining === 0) || (foodRemaining < 1)) {
+      clearFoodInterval();
+      winLoose();
+    }
+  }
+  
+  function foodBarUpdate() {
+    newFoodWidth = foodRemaining + '%' ;
+    $foodBar.css('width', newFoodWidth);
   }
 
   function clearFoodInterval() {
     clearInterval(foodAutoInterval);
   }
 
-  //////////////////////////////////// play buttons EASY mode
+  // play buttons - EASY mode
   // Work button adds money and removes energy
   function moneyBarEasy() {
     moneyRemaining= moneyRemaining + 4;
-    console.log(`work added ${moneyRemaining} money (added)`);
-
+    moneyBarUpdate();
     energyRemaining = energyRemaining - 2;
-    console.log(`work removed ${energyRemaining} energy (removed)`);
+    energyBarUpdate();
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarEasy() {
     energyRemaining= energyRemaining + 4;
-    console.log(`after sleep, new energy is ${energyRemaining} (added)`);
-
+    energyBarUpdate();
     moneyRemaining= moneyRemaining - 2;
-    console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
-
+    moneyBarUpdate();
     foodRemaining= foodRemaining - 2;
-    console.log(`after sleep, new food is ${foodRemaining} (removed)`);
+    foodBarUpdate();
   }
 
   // food button adds to the food bar but removes money
   function foodBarEasy() {
     foodRemaining= foodRemaining + 4;
-    console.log(`after eating, new food is ${foodRemaining} (added)`);
-
+    foodBarUpdate();
     moneyRemaining= moneyRemaining - 2;
-    console.log(`after eating, new money is ${moneyRemaining} (removed)`);
+    moneyBarUpdate();
   }
 
-  //////////////////////////////////// play buttons HARD mode
+  // play buttons - HARD mode
   // Work button adds money and removes energy
   function moneyBarHard() {
     moneyRemaining= moneyRemaining + 6;
-    console.log(`work added ${moneyRemaining} money (added)`);
-
+    moneyBarUpdate();
     energyRemaining = energyRemaining - 4;
-    console.log(`work removed ${energyRemaining} energy (removed)`);
+    energyBarUpdate();
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarHard() {
     energyRemaining= energyRemaining + 6;
-    console.log(`after sleep, new energy is ${energyRemaining} (added)`);
-
+    energyBarUpdate();
     moneyRemaining= moneyRemaining - 4;
-    console.log(`after sleep, new money is ${moneyRemaining} (removed)`);
-
+    moneyBarUpdate();
     foodRemaining= foodRemaining - 4;
-    console.log(`after sleep, new food is ${foodRemaining} (removed)`);
+    foodBarUpdate();
   }
 
   // food button adds to the food bar but removes money
   function foodBarHard() {
     foodRemaining= foodRemaining + 4;
-    console.log(`after eating, new food is ${foodRemaining} (added)`);
-
+    foodBarUpdate();
     moneyRemaining= moneyRemaining - 4;
-    console.log(`after eating, new money is ${moneyRemaining} (removed)`);
+    moneyBarUpdate();
   }
 
-  //winning/loosing conditions, displaying result, img and the sound
+  //winning/loosing conditions and functions, displaying result, img and the sound
   const $winLooseResult = $('.winLooseResult');
   let newText = '';
   $winLooseResult.text(newText);
@@ -269,9 +268,9 @@ $(() => {
     newText = 'Woohoo, you won!';
     $winLooseResult.text(newText);
     $winImg.removeClass('hidden');
-
   }
-  //screen 3 home button clicked
+
+  //home button clicked resets the remaining amounts in bars, resets the timer, hides shown result images and changes display
   const $homeButton = $('.homeButton');
   $homeButton.on('click', homeClicked);
 

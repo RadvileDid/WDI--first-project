@@ -1,4 +1,7 @@
-
+* {
+  box-sizing: content-box;
+  outline: blue solid 1px;
+}
 
 html {
   background: url("../img/sky.jpg") no-repeat fixed center;
@@ -6,7 +9,6 @@ html {
 }
 
 body {
-  box-sizing: content-box;
   margin: auto;
   text-align: center;
   vertical-align: middle;
@@ -14,18 +16,20 @@ body {
   color: white;
   font-size: 20px;
 }
-/*@media (max-width: 550px) {
-  /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
 main {
   width: 60%;
   margin: 0 auto;
+  padding: 40px;
 }
 
 /*main conatiners*/
 .screen {
-  margin: 70px 0;
-  height: 550px;
+  margin: 20px 0;
+}
+
+.bottomButtons, .homeButton {
+  margin-bottom: 25px;
 }
 
 .container {
@@ -45,11 +49,14 @@ img {
 
 .smallImg {
   margin: 10px;
-  height: 45px;
   width: 50px;
-  float: left;
+  height: 45px;
   position: absolute;
-  margin-left: 114px;
+  margin-left: -26px;
+}
+.bigImg {
+  height: 150px;
+  width: 130px;
 }
 
 .looseImg {
@@ -66,10 +73,14 @@ img {
 }
 
 .childLeft, .childRight{
-  width: 45%;
+  width: 43%;
   float: left;
   padding: 10px;
   margin: 8px;
+}
+
+.childRight{
+  float: right;
 }
 
 .playOptions {
@@ -86,24 +97,31 @@ button {
   border-radius: 5px;
   border: 0px;
   font-size: 16px;
-  margin: 5px;
 }
 
 .playButtons {
-  padding: 10px;
   background-color: DodgerBlue;
-  width: 100%;
+  width: 97%;
   height: 65px;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.screen1parent{
+  margin: 2px;
+}
+.bar1, .bar2, .bar3 {
+  padding: 5px 0;
 }
 
 /*status bars */
 
 .statBar {
   background-color: blanchedAlmond;
-  margin-bottom: 10px;
-  margin-top: 6px;
   border-radius: 10px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .moneyBar, .energyBar, .foodBar {
@@ -132,7 +150,7 @@ h2 {
 }
 
 p {
-  padding: 20px;
+  padding: 0 50px;
 }
 
 .winLooseResult {
@@ -150,7 +168,7 @@ p {
 }
 
 .timer2 {
-  margin: -22px 362px;
+  margin: -20px 40px;
 }
 
 .timerBackground{
@@ -159,9 +177,92 @@ p {
   height: 40px;
   position: absolute;
   width: 85px;
-  margin: -22px 362px;
+  margin: -20px 40px;
 }
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 1010px) {
+  .childLeft, .childRight {
+    width: 41%;
+  }
+
+  .buttonsAndBars{
+    margin: 50px auto;
+  }
+
+}
+
+@media (max-width: 875px) {
+  main {
+    width: 80%;
+  }
+
+  .buttonsAndBars{
+    margin: 50px auto;
+  }
+
+  .childLeft, .childRight {
+    width: 35%;
+  }
+}
+
+@media (max-width: 750px) {
+  .childLeft, .childRight {
+    width: 90%;
+  }
+}
+
+@media (max-width: 510px) {
+  h1{
+    text-shadow: -2px 2px 0px black;
+    font-size: 23px;
+  }
+
+  h2{
+    font-size: 20px;
+  }
+
+}
+
+
+@media (max-width: 415px) {
+  .buttonsAndBars {
+    margin: 0;
+    padding: 0;
+  }
+  .playButtons{
+    height: 45px;
+  }
+
+  .childLeft, .childRight {
+    width: 88%;
+  }
+
+  .moneyBar, .energyBar, .foodBar {
+    height: 45px;
+  }
+
+  /*h2 {
+    font-size: 20px;
+  }
+
+ .instructionsP{
+   font-size: 16px;
+ }*/
+
+ .easyButton, .hardButton{
+   margin: 5px;
+ }
+
+ .smallImg {
+    width: 30px;
+    height: 25px;
+  }
+
+  .playButton{
+    margin-bottom: 10px;
+  }
 }

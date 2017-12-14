@@ -12,10 +12,10 @@ Here are the 3 wireframes I made:
 During the coding process, especially when I started adding the styles I realised not all the decisions made were that good therefore decided to have this updated and the final result is **below**.
 
 Home window with instructions and start buttons:
-<img src="https://i.imgur.com/vQTAbwG.png"> 
+<img src="https://i.imgur.com/vQTAbwG.png" width="500px"> 
 
 Once the preferred mode is selected, the first stage of the game loads:
-<img src="https://i.imgur.com/NfmGjUl.png"> 
+<img src="https://i.imgur.com/NfmGjUl.png" width="500px"> 
 
 Once the button play is clicked, it disappears and the 60 seconds timer, as well as the status bars set off and start decreasing. 
 
@@ -24,13 +24,14 @@ As the status bars decrease automatically, in order to survibe the 60 seconds yo
 If the player clicks on **Go to work** button, he will have more money but loose some energy. If the button clicked is **Go to sleep**, he will have more energy but will loose both money and will get more hungry.
 
 If the player clicks on **Eat a doughnut**, he will be less hungry but it will cost him money.
-<img src="https://i.imgur.com/2FCOXNb.png"> 
+<img src="https://i.imgur.com/2FCOXNb.png" width="500px"> 
 
 If 60 seconds ended and all 3 status bars had some resources left, the player wins the game and the win result is shown.
-<img src="https://i.imgur.com/TQMugcP.png"> 
+
+<img src="https://i.imgur.com/TQMugcP.png" width="500px"> 
 
 However, if one (or more) status bars decreases to 0 / empties, player lost!
-<img src="https://i.imgur.com/IttQGo5.png"> 
+<img src="https://i.imgur.com/IttQGo5.png" width="500px"> 
 
 
 ### Installation instructions

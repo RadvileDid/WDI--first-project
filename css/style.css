@@ -183,7 +183,7 @@ p {
 .timer2 {
   margin: -20px 40px;
   left: 50%;
-      transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .timerBackground{
@@ -255,11 +255,11 @@ p {
     height: 45px;
   }
 
- .easyButton, .hardButton{
-   margin: 5px;
- }
+  .easyButton, .hardButton{
+    margin: 5px;
+  }
 
- .smallImg {
+  .smallImg {
     width: 30px;
     height: 25px;
   }

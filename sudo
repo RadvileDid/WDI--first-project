@@ -7,7 +7,6 @@ function start () {
 }
 
 ////
-
 buttonPlay.on('click', play);
 
 function play() {
@@ -29,7 +28,6 @@ function statBarsAuto() {
 };
 
 ////
-
 function moneyAuto() {
   setInterval;
   money -= 5;
@@ -63,7 +61,6 @@ buttonSleep.on('click', function() {
   });
 
 ////
-
 function stop() {
   timer clearInterval;
   moneyAuto clearInterval;
@@ -82,7 +79,6 @@ if( money || energy || food = 0) {
 };
 
 ////
-
 buttonHome.on('click', home);
 
 function home() {
@@ -91,12 +87,9 @@ function home() {
 }
 
 ////
-
 buttonPlayAgain.on('click', playAgain);
 
 function playAgain() {
   hide 3.(this screen);
   unhide 2.1 screen;
 }
-
-////////

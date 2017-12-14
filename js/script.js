@@ -26,7 +26,7 @@ $(() => {
   $hardButton.on('click', hardMode);
 
 
- // functions for the modes easy or hard selections
+  // functions for the modes easy or hard selections
   function easyMode() {
     $screen1.addClass('hidden');
     $screen2.removeClass('hidden');
@@ -55,7 +55,7 @@ $(() => {
     $foodButton.removeAttr('disabled');
   }
 
-  // timer function - set's the time off from 60 to 0 seconds and stops once 0 is reached
+  // timer function - set's the time off from 60 to 0 seconds and stops once 0 is reached, clears the interval
   const $timer = $('.timer');
   let timeRemaining = 60;
   $timer.text(timeRemaining);
@@ -77,7 +77,7 @@ $(() => {
     clearInterval(timerInterval);
   }
 
-  // all 3 status bars will start decreasing automatically using the interval set
+  // all 3 status bars will start decreasing automatically using the intervals set
   function statBarsAuto() {
     moneyBarAuto();
     energyBarAuto();
@@ -158,7 +158,7 @@ $(() => {
       winLoose();
     }
   }
-  
+
   function foodBarUpdate() {
     newFoodWidth = foodRemaining + '%' ;
     $foodBar.css('width', newFoodWidth);

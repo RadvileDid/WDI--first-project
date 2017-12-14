@@ -22,15 +22,6 @@ main {
   padding: 40px;
 }
 
-/*main conatiners*/
-.screen {
-  margin: 20px 0;
-}
-
-.bottomButtons, .homeButton {
-  margin-bottom: 25px;
-}
-
 .container {
   background-color: white;
   color: LightSlateGrey;
@@ -38,56 +29,15 @@ main {
   border-radius: 5px;
 }
 
-/*images*/
-img {
-  width: 300px;
-  height: 335px;
-  padding-bottom: 15px;
+.hidden {
+  display: none;
 }
 
-
-.smallImg {
-  margin: 10px;
-  width: 50px;
-  height: 45px;
-  position: absolute;
-  margin-left: -26px;
-}
-.bigImg {
-  height: 150px;
-  width: 130px;
+/*buttons styling*/
+.bottomButtons, .homeButton {
+  margin-bottom: 25px;
 }
 
-.looseImg {
-  width: 250px;
-}
-
-.winImg {
-  width: 320px;
-}
-
-/*layout*/
-.parent{
-  overflow: hidden;
-}
-
-.childLeft, .childRight{
-  width: 43%;
-  float: left;
-  padding: 10px;
-  margin: 8px;
-}
-
-.childRight{
-  float: right;
-}
-
-.playOptions {
-  display: flex;
-  flex-direction: column;
-}
-
-/*buttons*/
 button {
   height: 40px;
   width: 130px;
@@ -118,14 +68,71 @@ button.playButtons:active{
   background: #76d6ff;
 }
 
+/*image styling*/
+img {
+  width: 300px;
+  height: 335px;
+  padding-bottom: 15px;
+}
+
+.smallImg {
+  margin: 10px;
+  width: 50px;
+  height: 45px;
+  position: absolute;
+  margin-left: -26px;
+}
+.bigImg {
+  height: 150px;
+  width: 130px;
+}
+
+.looseImg {
+  width: 250px;
+}
+
+.winImg {
+  width: 320px;
+}
+
+/*layout styling*/
+.parent{
+  overflow: hidden;
+}
+
+.childLeft, .childRight{
+  width: 43%;
+  float: left;
+  padding: 10px;
+  margin: 8px;
+}
+
+.childRight{
+  float: right;
+}
+
+.playOptions {
+  display: flex;
+  flex-direction: column;
+}
+
 .screen1parent{
   margin: 2px;
 }
+
+.buttonsAndBars {
+  margin: 100px 20px;
+  padding: 20px 22px;
+}
+
+.screen {
+  margin: 20px 0;
+}
+
+/*status bar styling*/
 .bar1, .bar2, .bar3 {
   padding: 5px 0;
 }
-
-/*status bars */
 
 .statBar {
   background-color: blanchedAlmond;
@@ -143,13 +150,7 @@ button.playButtons:active{
   border-radius: 5px;
 }
 
-.buttonsAndBars {
-  margin: 100px 20px;
-  padding: 20px 22px;
-}
-
-/*random*/
-
+/*text styling*/
 h1 {
   color: gold;
   font-family: Courier;
@@ -168,6 +169,7 @@ p {
   font-size: 24px;
 }
 
+/*timer styling*/
 .timer {
   color: orangeRed;
   background-color: black;
@@ -192,10 +194,6 @@ p {
   width: 85px;
   left: 50%;
   transform: translate(-50%,-50%);
-}
-
-.hidden {
-  display: none;
 }
 
 @media (max-width: 1010px) {
@@ -238,9 +236,7 @@ p {
   h2{
     font-size: 20px;
   }
-
 }
-
 
 @media (max-width: 415px) {
   .buttonsAndBars {
@@ -258,14 +254,6 @@ p {
   .moneyBar, .energyBar, .foodBar {
     height: 45px;
   }
-
-  /*h2 {
-    font-size: 20px;
-  }
-
- .instructionsP{
-   font-size: 16px;
- }*/
 
  .easyButton, .hardButton{
    margin: 5px;

@@ -284,9 +284,9 @@ $(() => {
     resetTimer();
     $winImg.addClass('hidden');
     $looseImg.addClass('hidden');
-    $buttonWork.addAttr('disabled');
-    $sleepButton.addAttr('disabled');
-    $foodButton.addAttr('disabled');
+    $buttonWork.attr('disabled');
+    $sleepButton.attr('disabled');
+    $foodButton.attr('disabled');
   }
 
   function resetMoney() {

@@ -265,7 +265,7 @@ $(() => {
 
   function loose() {
     woohooSound.play();
-    newText = 'Woohoo, you won!';
+    newText = 'Woohoo, you won! Well done';
     $winLooseResult.text(newText);
     $winImg.removeClass('hidden');
   }

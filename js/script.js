@@ -14,9 +14,9 @@ $(() => {
   whySound.src = 'audio/why.mp3';
 
   //play options/buttons
-  const $foodButton = $('.foodButton');
-  const $sleepButton = $('.sleepButton');
-  const $buttonWork = $('.workButton');
+  const $foodButton = $('.food-button');
+  const $sleepButton = $('.sleep-button');
+  const $buttonWork = $('.work-button');
 
   // clicking on the start button hides the screen 1
   const $easyButton = $('.easyButton');
@@ -87,7 +87,7 @@ $(() => {
   //money status bar, decreasing automatically and if the bar reached 0, loose event is executed
   let moneyRemaining = 100;
   const $moneyBar = $('.moneyBar');
-  let newMoneyWidth;
+  let newMoneyHeight;
   let moneyAutoInterval;
 
   function moneyBarAuto() {
@@ -104,8 +104,8 @@ $(() => {
   }
 
   function moneyBarUpdate() {
-    newMoneyWidth= moneyRemaining + '%' ;
-    $moneyBar.css('width', newMoneyWidth);
+    newMoneyHeight= moneyRemaining + '%' ;
+    $moneyBar.css('height', newMoneyHeight);
   }
 
   function clearMoneyInterval() {
@@ -115,7 +115,7 @@ $(() => {
   //energy status bar, decreasing automatically  and if the bar reached 0, loose event is executed
   let energyRemaining = 100;
   const $energyBar = $('.energyBar');
-  let newEnergyWidth;
+  let newEnergyHeight;
   let energyAutoInterval;
 
   function energyBarAuto() {
@@ -132,8 +132,8 @@ $(() => {
   }
 
   function energyBarUpdate() {
-    newEnergyWidth = energyRemaining + '%' ;
-    $energyBar.css('width', newEnergyWidth);
+    newEnergyHeight = energyRemaining + '%' ;
+    $energyBar.css('height', newEnergyHeight);
   }
 
   function clearEnergyInterval() {
@@ -143,11 +143,16 @@ $(() => {
   //food status bar, decreasing automatically  and if the bar reached 0, loose event is executed
   let foodRemaining = 100;
   const $foodBar = $('.foodBar');
-  let newFoodWidth;
+  let newFoodHeight;
   let foodAutoInterval;
 
   function foodBarAuto() {
     foodAutoInterval = setInterval(foodBarAutoUpdate, 1000);
+  }
+
+  function foodBarUpdate() {
+    newFoodHeight = foodRemaining + '%' ;
+    $foodBar.css('height', newFoodHeight);
   }
 
   function foodBarAutoUpdate() {
@@ -159,11 +164,6 @@ $(() => {
     }
   }
 
-  function foodBarUpdate() {
-    newFoodWidth = foodRemaining + '%' ;
-    $foodBar.css('width', newFoodWidth);
-  }
-
   function clearFoodInterval() {
     clearInterval(foodAutoInterval);
   }
@@ -171,55 +171,79 @@ $(() => {
   // play buttons - EASY mode
   // Work button adds money and removes energy
   function moneyBarEasy() {
-    moneyRemaining= moneyRemaining + 4;
-    moneyBarUpdate();
-    energyRemaining = energyRemaining - 2;
-    energyBarUpdate();
+    if (moneyRemaining >= 100) {
+      return;
+    } else {
+      moneyRemaining= moneyRemaining + 4;
+      moneyBarUpdate();
+      energyRemaining = energyRemaining - 2;
+      energyBarUpdate();
+    }
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarEasy() {
-    energyRemaining= energyRemaining + 4;
-    energyBarUpdate();
-    moneyRemaining= moneyRemaining - 2;
-    moneyBarUpdate();
-    foodRemaining= foodRemaining - 2;
-    foodBarUpdate();
+    if (energyRemaining >= 100) {
+      return;
+    } else {
+      energyRemaining= energyRemaining + 4;
+      energyBarUpdate();
+      moneyRemaining= moneyRemaining - 2;
+      moneyBarUpdate();
+      foodRemaining= foodRemaining - 2;
+      foodBarUpdate();
+    }
   }
 
   // food button adds to the food bar but removes money
   function foodBarEasy() {
-    foodRemaining= foodRemaining + 4;
-    foodBarUpdate();
-    moneyRemaining= moneyRemaining - 2;
-    moneyBarUpdate();
+    if (foodRemaining >= 100) {
+      return;
+    } else {
+      foodRemaining= foodRemaining + 4;
+      foodBarUpdate();
+      moneyRemaining= moneyRemaining - 2;
+      moneyBarUpdate();
+    }
   }
 
   // play buttons - HARD mode
   // Work button adds money and removes energy
   function moneyBarHard() {
-    moneyRemaining= moneyRemaining + 6;
-    moneyBarUpdate();
-    energyRemaining = energyRemaining - 4;
-    energyBarUpdate();
+    if (moneyRemaining >= 100) {
+      return;
+    } else {
+      moneyRemaining= moneyRemaining + 6;
+      moneyBarUpdate();
+      energyRemaining = energyRemaining - 4;
+      energyBarUpdate();
+    }
   }
 
   // sleep button adds energy removes money and foodBar
   function sleepBarHard() {
-    energyRemaining= energyRemaining + 6;
-    energyBarUpdate();
-    moneyRemaining= moneyRemaining - 4;
-    moneyBarUpdate();
-    foodRemaining= foodRemaining - 4;
-    foodBarUpdate();
+    if (energyRemaining >= 100) {
+      return;
+    } else {
+      energyRemaining= energyRemaining + 6;
+      energyBarUpdate();
+      moneyRemaining= moneyRemaining - 4;
+      moneyBarUpdate();
+      foodRemaining= foodRemaining - 4;
+      foodBarUpdate();
+    }
   }
 
   // food button adds to the food bar but removes money
   function foodBarHard() {
-    foodRemaining= foodRemaining + 4;
-    foodBarUpdate();
-    moneyRemaining= moneyRemaining - 4;
-    moneyBarUpdate();
+    if (foodRemaining >= 100) {
+      return;
+    } else {
+      foodRemaining= foodRemaining + 4;
+      foodBarUpdate();
+      moneyRemaining= moneyRemaining - 4;
+      moneyBarUpdate();
+    }
   }
 
   //winning/loosing conditions and functions, displaying result, img and the sound
@@ -291,20 +315,20 @@ $(() => {
 
   function resetMoney() {
     moneyRemaining = 100;
-    newMoneyWidth= moneyRemaining + '%' ;
-    $moneyBar.css('width', newMoneyWidth);
+    newMoneyHeight= moneyRemaining + '%' ;
+    $moneyBar.css('height', newMoneyHeight);
   }
 
   function resetEnergy() {
     energyRemaining = 100;
-    newEnergyWidth= energyRemaining + '%' ;
-    $energyBar.css('width', newEnergyWidth);
+    newEnergyHeight= energyRemaining + '%' ;
+    $energyBar.css('height', newEnergyHeight);
   }
 
   function resetFood() {
     foodRemaining = 100;
-    newFoodWidth= foodRemaining + '%' ;
-    $foodBar.css('width', newFoodWidth);
+    newFoodHeight= foodRemaining + '%' ;
+    $foodBar.css('height', newFoodHeight);
   }
 
   function resetTimer() {

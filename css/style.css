@@ -48,12 +48,16 @@ button {
   font-size: 16px;
 }
 
-.playButtons {
+/*dabar cia game-button*/
+.game-button {
   background-color: DodgerBlue;
-  width: 97%;
-  height: 65px;
+  color: white;
+  height: 100px;
+  width: 100px;
   box-sizing: border-box;
-  margin: 5px;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 15px;
 }
 
 .easyButton, .hardButton{
@@ -68,6 +72,10 @@ button.playButtons:active{
   background: #76d6ff;
 }
 
+.playButton{
+  margin-bottom: 30px;
+}
+
 /*image styling*/
 img {
   width: 300px;
@@ -76,12 +84,13 @@ img {
 }
 
 .smallImg {
-  margin: 10px;
-  width: 50px;
-  height: 45px;
+  width: 40px;
+  height: 35px;
   position: absolute;
-  margin-left: -26px;
+  margin-top: -10px;
+  margin-left: -20px;
 }
+
 .bigImg {
   height: 150px;
   width: 130px;
@@ -97,7 +106,10 @@ img {
 
 /*layout styling*/
 .parent{
-  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 0px 50px;
 }
 
 .childLeft, .childRight{
@@ -111,22 +123,20 @@ img {
   float: right;
 }
 
-.playOptions {
-  display: flex;
-  flex-direction: column;
+.gameButton-text {
+  padding-top: 7px;
 }
 
 .screen1parent{
   margin: 2px;
 }
 
-.buttonsAndBars {
-  margin: 100px 20px;
-  padding: 20px 22px;
-}
-
 .screen {
   margin: 20px 0;
+}
+
+.section {
+  margin: 50px 0;
 }
 
 /*status bar styling*/
@@ -134,20 +144,24 @@ img {
   padding: 5px 0;
 }
 
-.statBar {
+.statusBar-parent {
   background-color: blanchedAlmond;
   border-radius: 10px;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  height: 300px;
+  position: relative;
 }
 
-.moneyBar, .energyBar, .foodBar {
+.statusBar-child {
   background-color: sandyBrown;
-  height: 65px;
+  width: 100%;
   color: white;
   font-size: 16px;
   border-radius: 5px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 /*text styling*/
@@ -161,12 +175,13 @@ h2 {
   padding: 20px;
 }
 
-p {
+.instructionsP {
   padding: 0 50px;
 }
 
 .winLooseResult {
   font-size: 24px;
+  padding: 10px;
 }
 
 /*timer styling*/
@@ -204,7 +219,6 @@ p {
   .buttonsAndBars{
     margin: 50px auto;
   }
-
 }
 
 @media (max-width: 875px) {
@@ -225,16 +239,42 @@ p {
   .childLeft, .childRight {
     width: 90%;
   }
+
+  .instructionsP {
+    padding: 0;
+  }
 }
 
 @media (max-width: 510px) {
   h1{
     text-shadow: -2px 2px 0px black;
-    font-size: 23px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 525px) {
+  .section{
+    padding: 2px;
   }
 
-  h2{
-    font-size: 20px;
+  h1{
+    padding-top: 7px;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  h2 {
+    padding: 0;
+  }
+
+  .parent {
+    padding: 0px 25px;
+  }
+
+  .screen2, .screen3 {
+    margin-top: 84px;
   }
 }
 
@@ -243,6 +283,7 @@ p {
     margin: 0;
     padding: 0;
   }
+  
   .playButtons{
     height: 45px;
   }
@@ -251,17 +292,8 @@ p {
     width: 88%;
   }
 
-  .moneyBar, .energyBar, .foodBar {
-    height: 45px;
-  }
-
   .easyButton, .hardButton{
     margin: 5px;
-  }
-
-  .smallImg {
-    width: 30px;
-    height: 25px;
   }
 
   .playButton{

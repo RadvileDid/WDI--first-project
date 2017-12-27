@@ -11,7 +11,7 @@
 </head>
 <body>
   <main>
-    
+
     <div class="screen1 screen">
       <h1 class="animated infinite flash">Keep Homer alive!</h1>
       <div class="parent container">
@@ -35,35 +35,40 @@
       <div class="timerBackground">
         <div class="timer"></div>
       </div>
-      <div class="buttonsAndBars parent">
-        <div class="playOptions childLeft">
-          <button class="playButtons workButton" type="button" name="work" disabled>Go to work</button>
-          <button class="playButtons sleepButton" type="button" name="sleep" disabled>Go to sleep</button>
-          <button class="playButtons foodButton" type="button" name="food" disabled>Eat a doughnut</button>
-        </div>
-        <div class="statBars childRight">
-          <div class="bar1">
-            <img src="img/PIC-Blog-1-Whats-your-budget.png" class="smallImg">
-            <div class="statBar">
-              <div class="moneyBar"></div>
+      <div class="parent">
+        <div class="section">
+          <div class="statusBar-parent">
+            <div class="statusBar-child moneyBar">
             </div>
           </div>
-          <div class="bar2">
-            <img src="img/Monster_Couch_Menu.png" class="smallImg">
-            <div class="statBar">
-              <div class="energyBar"></div>
-            </div>
-          </div>
-          <div class="bar3">
-            <img src="img/donut_PNG98.png" class="smallImg">
-            <div class="statBar">
-              <div class="foodBar"></div>
-            </div>
+          <div class="game-button work-button" disabled>
+            <p class="gameButton-text">Work</p>
+            <img src="img/PIC-Blog-1-Whats-your-budget.png" alt="Money" class="smallImg">
           </div>
         </div>
-        <div class="playButtontest">
-          <button type="button" name="play" class="playButton animated infinite pulse">Play</button>
+        <div class="section">
+          <div class="statusBar-parent">
+            <div class="statusBar-child energyBar">
+            </div>
+          </div>
+          <div class="game-button sleep-button" disabled>
+            <p class="gameButton-text">Sleep</p>
+            <img src="img/Monster_Couch_Menu.png" alt="Sofa" class="smallImg">
+          </div>
         </div>
+        <div class="section">
+          <div class="statusBar-parent">
+            <div class="statusBar-child foodBar">
+            </div>
+          </div>
+          <div class="game-button food-button" disabled>
+            <p class="gameButton-text">Eat</p>
+            <img src="img/donut_PNG98.png" alt="Doughnut" class="smallImg">
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="button" name="play" class="playButton animated infinite pulse">Play</button>
       </div>
     </div>
 
